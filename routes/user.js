@@ -11,11 +11,14 @@ router.get("/", async (req, res) => {
 // Register a new user
 router.post("/", async (req, res) => {
   try {
-    const user = new User(req.body);
-    await user.save();
-    res.status(201).json(user);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    const {name, email} = req.body;
+
+    const user = new User({name, email})
+    const savedUser = await user.save()
+    res.json({message: "Department saved successfully", savedUser:savedUser})
+  } 
+  catch (err){
+    res.status(400).json({ message: err.message });
   }
 });
 

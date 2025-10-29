@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-const productSchema = new mongoose.Schema({
-  name: { type: String, unique: true, required: true },
+const productSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   price: { type: Number, required: true },
